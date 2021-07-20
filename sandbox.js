@@ -1,5 +1,5 @@
 const correctAnswers = ['D','D','C','B'];
-let form = document.querySelector('.form-check');
+let form = document.querySelector('#quiz-form');
 
 form.addEventListener('submit', e => 
 {
@@ -17,9 +17,17 @@ form.addEventListener('submit', e =>
     // Present the score to the user and scroll up to it
     window.scrollTo(0,0);
     let scoreTag = document.querySelector('#score-tag');
+    let scoreHeader = document.querySelector('#score-header');
     scoreTag.innerHTML = `Your score is ${percentCorrect}%`;
-    if(percentCorrect > 50) 
-        scoreTag.setAttribute('style', 'color: green');
+    scoreHeader.classList.remove('d-none');
+    if(percentCorrect > 50)
+    {
+        scoreHeader.classList.remove('bg-danger');
+        scoreHeader.classList.add('class', 'bg-success');
+    }
     else 
-        scoreTag.setAttribute('style', 'color: red');
+    {
+        scoreHeader.classList.remove('bg-success');
+        scoreHeader.classList.add('class', 'bg-danger');
+    }
 });
